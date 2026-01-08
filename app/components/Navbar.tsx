@@ -25,7 +25,7 @@ export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isRealMobile, setIsRealMobile] = useState(false);
 
-  // ✅ detect ONLY real mobile (normal view)
+  // detect ONLY real mobile (normal view)
   useEffect(() => {
     const detect = () => {
       const isCoarse = window.matchMedia("(pointer: coarse)").matches;
@@ -58,7 +58,7 @@ export default function Navbar() {
           </span>
         </Link>
 
-        {/* ================= DESKTOP NAV (UNCHANGED) ================= */}
+        {/* ================= DESKTOP NAV ================= */}
         {!isRealMobile && (
           <>
             <div className="absolute left-1/2 -translate-x-1/2 flex items-center gap-[120px]">
@@ -162,16 +162,16 @@ export default function Navbar() {
                 About Us
               </Link>
 
-              {/* SERVICES */}
+              {/* SERVICES (TEXT BLACK ONLY) */}
               <div>
                 <button
                   onClick={() => setIsServicesOpen(!isServicesOpen)}
-                  className="w-full flex items-center justify-between text-[#00FFFF] text-xl font-bold uppercase tracking-widest"
+                  className="w-full flex items-center justify-between text-black text-xl font-bold uppercase tracking-widest"
                 >
-                  Services
+                  SERVICES
                   <ChevronDown
                     size={22}
-                    className={`transition-transform ${
+                    className={`transition-transform text-[#00FFFF] ${
                       isServicesOpen ? "rotate-180" : ""
                     }`}
                   />
