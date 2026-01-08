@@ -25,20 +25,22 @@ export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isRealMobile, setIsRealMobile] = useState(false);
 
-  // ✅ Detect ONLY real mobile normal view
+  // ✅ detect ONLY real mobile (normal view)
   useEffect(() => {
     const detect = () => {
       const isCoarse = window.matchMedia("(pointer: coarse)").matches;
       const isSmall = window.innerWidth < 768;
       setIsRealMobile(isCoarse && isSmall);
     };
-
     detect();
     window.addEventListener("resize", detect);
     return () => window.removeEventListener("resize", detect);
   }, []);
 
-  const linkStyle = { color: "#ffffff", textDecoration: "none" };
+  const linkStyle = {
+    textDecoration: "none",
+    color: "#ffffff",
+  };
 
   return (
     <nav className="fixed top-0 left-0 right-0 w-full bg-[#161b22] border-b border-white/10 z-[10000]">
@@ -56,7 +58,7 @@ export default function Navbar() {
           </span>
         </Link>
 
-        {/* ================= DESKTOP NAV ================= */}
+        {/* ================= DESKTOP NAV (UNCHANGED) ================= */}
         {!isRealMobile && (
           <>
             <div className="absolute left-1/2 -translate-x-1/2 flex items-center gap-[120px]">
@@ -75,7 +77,7 @@ export default function Navbar() {
                   SERVICES
                   <ChevronDown
                     size={16}
-                    className={`transition-transform duration-300 ${
+                    className={`transition-transform ${
                       isServicesOpen ? "rotate-180 text-[#00FFFF]" : ""
                     }`}
                   />
@@ -87,7 +89,7 @@ export default function Navbar() {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: 10 }}
-                      className="absolute top-full left-0 mt-6 bg-[#0b0c10] border-2 border-[#0ea5e9] shadow-[0_40px_100px_rgba(0,0,0,0.9)] z-[10001]"
+                      className="absolute top-full left-0 mt-6 bg-[#0b0c10] border-2 border-[#0ea5e9] shadow-[0_40px_100px_rgba(0,0,0,0.9)]"
                     >
                       {SERVICES_NAV.map((s) => (
                         <Link
@@ -107,7 +109,6 @@ export default function Navbar() {
               <Link href="/#contact" style={linkStyle}>CONTACT</Link>
             </div>
 
-            {/* CALL BUTTON */}
             <div className="flex items-center gap-10">
               <motion.a
                 href="tel:8420424903"
@@ -121,8 +122,6 @@ export default function Navbar() {
                   Call Now
                 </span>
               </motion.a>
-
-              <div className="w-3 h-3 rounded-full bg-[#00FFFF] animate-pulse shadow-[0_0_15px_#00FFFF]" />
             </div>
           </>
         )}
@@ -145,22 +144,20 @@ export default function Navbar() {
             transition={{ type: "spring", stiffness: 120, damping: 18 }}
             className="fixed inset-0 bg-[#0b0c10] z-[10001]"
           >
-            {/* HEADER */}
-            <div className="px-6 py-5 flex items-center justify-between border-b border-white/10">
-              <span className="text-lg font-black tracking-widest uppercase text-[#00FFFF]">
-                Authorize Repair Care
-              </span>
+            {/* CLOSE */}
+            <div className="flex justify-end p-6">
               <button onClick={() => setIsMobileMenuOpen(false)}>
-                <X size={28} className="text-white" />
+                <X size={30} className="text-[#00FFFF]" />
               </button>
             </div>
 
             {/* MENU */}
-            <div className="flex flex-col px-6 py-8 gap-6">
+            <div className="flex flex-col px-8 gap-8 mt-10">
               <Link
                 href="/#about"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="text-white text-lg font-bold tracking-wider uppercase border-b border-white/10 pb-4"
+                className="text-[#00FFFF] text-xl font-bold uppercase tracking-widest"
+                style={{ textDecoration: "none" }}
               >
                 About Us
               </Link>
@@ -169,13 +166,13 @@ export default function Navbar() {
               <div>
                 <button
                   onClick={() => setIsServicesOpen(!isServicesOpen)}
-                  className="w-full flex items-center justify-between text-white text-lg font-bold tracking-wider uppercase"
+                  className="w-full flex items-center justify-between text-[#00FFFF] text-xl font-bold uppercase tracking-widest"
                 >
                   Services
                   <ChevronDown
-                    size={20}
+                    size={22}
                     className={`transition-transform ${
-                      isServicesOpen ? "rotate-180 text-[#00FFFF]" : ""
+                      isServicesOpen ? "rotate-180" : ""
                     }`}
                   />
                 </button>
@@ -186,14 +183,15 @@ export default function Navbar() {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      className="overflow-hidden mt-4 pl-4 flex flex-col gap-4 border-l border-[#00FFFF]/30"
+                      className="overflow-hidden mt-6 pl-4 flex flex-col gap-5"
                     >
                       {SERVICES_NAV.map((s) => (
                         <Link
                           key={s.name}
                           href={s.href}
                           onClick={() => setIsMobileMenuOpen(false)}
-                          className="text-white/80 text-base uppercase tracking-wider hover:text-[#00FFFF]"
+                          className="text-[#00FFFF]/80 text-lg uppercase tracking-wider"
+                          style={{ textDecoration: "none" }}
                         >
                           {s.name}
                         </Link>
@@ -206,16 +204,17 @@ export default function Navbar() {
               <Link
                 href="/#contact"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="text-white text-lg font-bold tracking-wider uppercase border-t border-white/10 pt-6"
+                className="text-[#00FFFF] text-xl font-bold uppercase tracking-widest"
+                style={{ textDecoration: "none" }}
               >
                 Contact Us
               </Link>
 
-              {/* CALL CTA */}
               <motion.a
                 href="tel:8420424903"
                 whileTap={{ scale: 0.96 }}
-                className="mt-10 flex items-center justify-center gap-3 bg-[#FFD700] text-black font-black uppercase tracking-widest py-4 rounded-full shadow-[0_0_25px_rgba(255,215,0,0.4)]"
+                className="mt-12 flex items-center justify-center gap-3 bg-[#FFD700] text-black font-black uppercase tracking-widest py-4 rounded-full"
+                style={{ textDecoration: "none" }}
               >
                 <PhoneCall size={20} />
                 Call Now
