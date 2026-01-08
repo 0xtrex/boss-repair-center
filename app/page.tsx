@@ -183,7 +183,8 @@ export default function HomePage() {
         </header>
 
         <div className="w-[85vw] mx-auto">
-          <section className="grid grid-cols-2 gap-x-[15vw] gap-y-[10vw]">
+          {/* gap-x updated from 15vw to 5vw */}
+          <section className="grid grid-cols-2 gap-x-[5vw] gap-y-[10vw]">
             {SERVICES.map((s, i) => (
               <Link href={`/services/${s.slug}`} key={i} className="no-underline">
                 <motion.div
