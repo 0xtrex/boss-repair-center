@@ -25,17 +25,17 @@ export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isRealMobile, setIsRealMobile] = useState(false);
 
-  // 🔒 Detect ONLY real mobile normal view
+  // ✅ Detect ONLY real mobile normal view
   useEffect(() => {
-    const detectMobile = () => {
+    const detect = () => {
       const isCoarse = window.matchMedia("(pointer: coarse)").matches;
-      const isSmallScreen = window.innerWidth < 768;
-      setIsRealMobile(isCoarse && isSmallScreen);
+      const isSmall = window.innerWidth < 768;
+      setIsRealMobile(isCoarse && isSmall);
     };
 
-    detectMobile();
-    window.addEventListener("resize", detectMobile);
-    return () => window.removeEventListener("resize", detectMobile);
+    detect();
+    window.addEventListener("resize", detect);
+    return () => window.removeEventListener("resize", detect);
   }, []);
 
   const linkStyle = { color: "#ffffff", textDecoration: "none" };
@@ -45,11 +45,7 @@ export default function Navbar() {
       <div className="max-w-[1900px] mx-auto px-6 md:px-12 py-6 md:py-10 flex items-center justify-between">
 
         {/* LOGO */}
-        <Link
-          href="/"
-          className="flex items-center gap-4 shrink-0"
-          style={linkStyle}
-        >
+        <Link href="/" className="flex items-center gap-4" style={linkStyle}>
           {!isRealMobile && (
             <div className="bg-[#00FFFF] p-2 rounded-lg">
               <ShieldCheck size={30} color="black" />
@@ -111,7 +107,7 @@ export default function Navbar() {
               <Link href="/#contact" style={linkStyle}>CONTACT</Link>
             </div>
 
-            {/* DESKTOP CALL BUTTON */}
+            {/* CALL BUTTON */}
             <div className="flex items-center gap-10">
               <motion.a
                 href="tel:8420424903"
@@ -121,7 +117,7 @@ export default function Navbar() {
                 style={{ textDecoration: "none" }}
               >
                 <PhoneCall size={20} color="black" />
-                <span className="text-black font-black uppercase text-sm tracking-widest">
+                <span className="text-black font-black uppercase tracking-widest text-sm">
                   Call Now
                 </span>
               </motion.a>
@@ -133,54 +129,97 @@ export default function Navbar() {
 
         {/* ================= MOBILE HAMBURGER ================= */}
         {isRealMobile && (
-          <button
-            className="text-white"
-            onClick={() => setIsMobileMenuOpen(true)}
-          >
-            <Menu size={32} />
+          <button onClick={() => setIsMobileMenuOpen(true)}>
+            <Menu size={32} className="text-white" />
           </button>
         )}
       </div>
 
-      {/* ================= MOBILE MENU ================= */}
+      {/* ================= PREMIUM MOBILE MENU ================= */}
       <AnimatePresence>
         {isRealMobile && isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-0 bg-white z-[10001]"
+            initial={{ x: "100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "100%" }}
+            transition={{ type: "spring", stiffness: 120, damping: 18 }}
+            className="fixed inset-0 bg-[#0b0c10] z-[10001]"
           >
-            <div className="p-6 flex justify-between items-center border-b">
-              <span className="text-xl font-bold">Authorize Repair Care</span>
+            {/* HEADER */}
+            <div className="px-6 py-5 flex items-center justify-between border-b border-white/10">
+              <span className="text-lg font-black tracking-widest uppercase text-[#00FFFF]">
+                Authorize Repair Care
+              </span>
               <button onClick={() => setIsMobileMenuOpen(false)}>
-                <X size={28} />
+                <X size={28} className="text-white" />
               </button>
             </div>
 
-            <div className="flex flex-col p-6 gap-6 text-lg font-semibold">
-              <Link href="/#about" onClick={() => setIsMobileMenuOpen(false)}>
+            {/* MENU */}
+            <div className="flex flex-col px-6 py-8 gap-6">
+              <Link
+                href="/#about"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="text-white text-lg font-bold tracking-wider uppercase border-b border-white/10 pb-4"
+              >
                 About Us
               </Link>
 
-              <details>
-                <summary className="cursor-pointer">Services</summary>
-                <div className="mt-4 flex flex-col gap-4 pl-4">
-                  {SERVICES_NAV.map((s) => (
-                    <Link
-                      key={s.name}
-                      href={s.href}
-                      onClick={() => setIsMobileMenuOpen(false)}
-                    >
-                      {s.name}
-                    </Link>
-                  ))}
-                </div>
-              </details>
+              {/* SERVICES */}
+              <div>
+                <button
+                  onClick={() => setIsServicesOpen(!isServicesOpen)}
+                  className="w-full flex items-center justify-between text-white text-lg font-bold tracking-wider uppercase"
+                >
+                  Services
+                  <ChevronDown
+                    size={20}
+                    className={`transition-transform ${
+                      isServicesOpen ? "rotate-180 text-[#00FFFF]" : ""
+                    }`}
+                  />
+                </button>
 
-              <Link href="/#contact" onClick={() => setIsMobileMenuOpen(false)}>
+                <AnimatePresence>
+                  {isServicesOpen && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      className="overflow-hidden mt-4 pl-4 flex flex-col gap-4 border-l border-[#00FFFF]/30"
+                    >
+                      {SERVICES_NAV.map((s) => (
+                        <Link
+                          key={s.name}
+                          href={s.href}
+                          onClick={() => setIsMobileMenuOpen(false)}
+                          className="text-white/80 text-base uppercase tracking-wider hover:text-[#00FFFF]"
+                        >
+                          {s.name}
+                        </Link>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+
+              <Link
+                href="/#contact"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="text-white text-lg font-bold tracking-wider uppercase border-t border-white/10 pt-6"
+              >
                 Contact Us
               </Link>
+
+              {/* CALL CTA */}
+              <motion.a
+                href="tel:8420424903"
+                whileTap={{ scale: 0.96 }}
+                className="mt-10 flex items-center justify-center gap-3 bg-[#FFD700] text-black font-black uppercase tracking-widest py-4 rounded-full shadow-[0_0_25px_rgba(255,215,0,0.4)]"
+              >
+                <PhoneCall size={20} />
+                Call Now
+              </motion.a>
             </div>
           </motion.div>
         )}
