@@ -29,10 +29,10 @@ const REVIEWS = [
 ];
 
 const SERVICES = [
-  { title: "Washing Machine Repair & Service", desc: "Expert repair for all types—top-load, front-load, fully and semi-automatic.", img: "/washing.png", scale: "w-[20.7vw]", slug: "washing-machine" },
+  { title: "Washing Machine Repair & Service", desc: "Expert repair for all types—top-load, front-load, fully and semi-automatic.", img: "/washing.png", scale: "w-[19.2vw]", slug: "washing-machine" },
   { title: "Refrigerator Repair & Service", desc: "Service for all types—single to side-by-side models.", img: "/fridge.png", scale: "w-[13.5vw]", slug: "refrigerator" },
   { title: "Microwave Repair & Service", desc: "Expert repairs for grill and convection models.", img: "/microwave.png", scale: "w-[23.7vw]", slug: "microwave" },
-  { title: "AC Repair & Service", desc: "Expert repair for window and split units.", img: "/ac.png", scale: "w-[23.7vw]", slug: "air-conditioner" },
+  { title: "AC Repair & Service", desc: "Expert repair for window and split units.", img: "/ac.png", scale: "w-[27.2vw]", slug: "air-conditioner" },
   { title: "Geyser Repair & Service", desc: "Fast, reliable service for all types.", img: "/geyser.png", scale: "w-[18vw]", slug: "geyser" },
   { title: "TV Repair & Service", desc: "Service for all types—LED, LCD, Smart TVs, and more.", img: "/tv.png", scale: "w-[24.7vw]", slug: "television" },
 ];
@@ -183,7 +183,6 @@ export default function HomePage() {
         </header>
 
         <div className="w-[85vw] mx-auto">
-          {/* gap-x updated from 15vw to 5vw */}
           <section className="grid grid-cols-2 gap-x-[5vw] gap-y-[10vw]">
             {SERVICES.map((s, i) => (
               <Link href={`/services/${s.slug}`} key={i} className="no-underline">
