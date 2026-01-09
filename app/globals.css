@@ -2,10 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ================= DEFAULT = LIGHT MODE ================= */
 :root {
+  --bg: #ffffff;
+  --bg-soft: #f4f6f8;
+  --card: #ffffff;
+  --fg: #0b0c10;
+  --fg-muted: #52525b;
+}
+
+/* ================= DARK MODE (YOUR ORIGINAL DESIGN) ================= */
+html[data-theme="dark"] {
   --bg: #0b0c10;
-  --fg: #fff;
-  --accent: #00FFFF;
+  --bg-soft: #0d0e12;
+  --card: #161b22;
+  --fg: #ffffff;
+  --fg-muted: #a1a1aa;
 }
 
 html, body {
@@ -15,12 +27,11 @@ html, body {
   padding: 0;
   width: 100%;
   overflow-x: hidden;
-  /* Removed strict overflow constraints that might squash content */
 }
 
-/* Ensure sections have enough height and space */
 section {
   position: relative;
   width: 100%;
   display: block;
 }
+

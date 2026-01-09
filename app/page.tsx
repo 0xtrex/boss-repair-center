@@ -9,10 +9,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Quote, Phone, PhoneCall } from "lucide-react";
 
 const BANNERS = [
-  { title: "PRECISION CARE", subtitle: "Industrial Grade Home Diagnostics", img: "/banner1.png" },
-  { title: "ELITE SERVICE", subtitle: "2-Hour Response Time Guaranteed", img: "/banner2.png" },
-  { title: "SMART REPAIR", subtitle: "AI-Powered Appliance Optimization", img: "/banner3.png" },
-  { title: "SMART REPAIR", subtitle: "AI-Powered Appliance Optimization", img: "/banner4.png" }
+  { title: "PRECISION CARE", subtitle: "Industrial Grade Home Diagnostics", img: "/banner1.jpg" },
+  { title: "ELITE SERVICE", subtitle: "2-Hour Response Time Guaranteed", img: "/banner2.jpg" },
+  { title: "SMART REPAIR", subtitle: "AI-Powered Appliance Optimization", img: "/banner3.jpg" },
+  { title: "SMART REPAIR", subtitle: "AI-Powered Appliance Optimization", img: "/banner4.jpg" }
 ];
 
 const REVIEWS = [
@@ -29,12 +29,12 @@ const REVIEWS = [
 ];
 
 const SERVICES = [
-  { title: "Washing Machine Repair & Service", desc: "Expert repair for all types—top-load, front-load, fully and semi-automatic.", img: "/washing.png", scale: "w-[19.2vw]", slug: "washing-machine" },
-  { title: "Refrigerator Repair & Service", desc: "Service for all types—single to side-by-side models.", img: "/fridge.png", scale: "w-[13.5vw]", slug: "refrigerator" },
+  { title: "Washing Machine Repair & Service", desc: "Expert repair for all types top load, front load, fully and semi automatic.", img: "/washing.png", scale: "w-[19.2vw]", slug: "washing-machine" },
+  { title: "Refrigerator Repair & Service", desc: "Service for all types single to side by side models.", img: "/fridge.png", scale: "w-[13.5vw]", slug: "refrigerator" },
   { title: "Microwave Repair & Service", desc: "Expert repairs for grill and convection models.", img: "/microwave.png", scale: "w-[23.7vw]", slug: "microwave" },
   { title: "AC Repair & Service", desc: "Expert repair for window and split units.", img: "/ac.png", scale: "w-[27.2vw]", slug: "air-conditioner" },
   { title: "Geyser Repair & Service", desc: "Fast, reliable service for all types.", img: "/geyser.png", scale: "w-[18vw]", slug: "geyser" },
-  { title: "TV Repair & Service", desc: "Service for all types—LED, LCD, Smart TVs, and more.", img: "/tv.png", scale: "w-[24.7vw]", slug: "television" },
+  { title: "TV Repair & Service", desc: "Service for all types LED, LCD, Smart TVs, and more.", img: "/tv.png", scale: "w-[24.7vw]", slug: "television" },
 ];
 
 const SlowTypewriter = ({ text, delay = 0 }: { text: string; delay?: number }) => {
@@ -69,7 +69,7 @@ export default function HomePage() {
   }, []);
 
   return (
-    <main className="bg-[#0b0c10] min-h-screen text-white overflow-x-hidden font-[family-name:var(--font-inter)]">
+    <main className="bg-[var(--bg)] min-h-screen text-[var(--fg)] overflow-x-hidden font-[family-name:var(--font-inter)]">
       <Navbar />
 
       {/* FLOATING CALL ICON - PURPLE BG + YELLOW ICON */}
@@ -135,7 +135,7 @@ export default function HomePage() {
       </section>
 
       {/* --- ABOUT US SECTION --- */}
-      <section id="about" className="py-40 px-6 flex flex-col items-center text-center bg-[#0d0e12] mt-[250px]">
+      <section id="about" className="py-40 px-6 flex flex-col items-center text-center bg-[var(--bg-soft)] mt-[250px]">
         <h2 className="text-[#0ea5e9] font-mono tracking-[0.5em] text-xs mb-10 uppercase"
             style={{ textShadow: "0 0 15px rgba(14,165,233,0.7)" }}>
           NO1 REPAIR CENTER
@@ -145,11 +145,11 @@ export default function HomePage() {
           <SlowTypewriter text="WE ARE BOSS REPAIR" delay={1} />
         </h3>
         <div className="max-w-5xl text-zinc-400 text-xl md:text-3xl uppercase tracking-widest font-light space-y-8">
-          <p>Authorize Repair Care is India&apos;s leading</p>
-          <p>industrial-grade home appliance diagnostic hub.</p>
+          <p>BOSS REPAIR is India&apos;s leading</p>
+          <p>industrial grade home appliance diagnostic hub.</p>
           <p>We provide precision engineering solutions</p>
           <p>for elite appliances with a</p>
-          <p>strict 2-hour response protocol.</p>
+          <p>strict 2 hour response guranteed.</p>
           
           <motion.div 
             initial={{ opacity: 0 }}
@@ -188,7 +188,7 @@ export default function HomePage() {
               <Link href={`/services/${s.slug}`} key={i} className="no-underline">
                 <motion.div
                   whileHover={{ scale: 0.98 }}
-                  className="aspect-square bg-[#0d0e12] border border-[#0ea5e9]/50 rounded-[3vw] p-[4vw] flex flex-col items-center justify-center text-center relative group overflow-hidden shadow-2xl h-[31.5vw] cursor-pointer"
+                  className="aspect-square bg-[var(--bg-soft)] border border-[#0ea5e9]/50 rounded-[3vw] p-[4vw] flex flex-col items-center justify-center text-center relative group overflow-hidden shadow-2xl h-[31.5vw] cursor-pointer"
                 >
                   <div className="z-10 flex items-center justify-center w-full flex-grow relative">
                     <div className="absolute inset-0 bg-[#0ea5e9]/10 blur-[60px] rounded-full scale-75 group-hover:bg-[#0ea5e9]/20 transition-all" />
@@ -204,7 +204,7 @@ export default function HomePage() {
                     </h2>
                     <p 
                       className="text-[0.8vw] font-medium leading-relaxed max-w-[85%] mx-auto opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                      style={{ color: "#ffffff" }}
+                      style={{ color: "var(--fg)" }}
                     >
                       {s.desc}
                     </p>
@@ -217,7 +217,7 @@ export default function HomePage() {
       </section>
 
       {/* --- REVIEWS SECTION --- */}
-      <section className="py-60 bg-[#0b0c10] flex flex-col items-center justify-center text-center px-6">
+      <section className="py-60 bg-[var(--bg)] flex flex-col items-center justify-center text-center px-6">
         <div className="max-w-4xl min-h-[400px] flex flex-col items-center justify-center">
           <AnimatePresence mode="wait">
             <motion.div
@@ -229,11 +229,11 @@ export default function HomePage() {
               className="flex flex-col items-center"
             >
               <Quote className="text-[#0ea5e9] mb-12 opacity-40" size={60} />
-              <div className="text-2xl md:text-4xl font-light italic text-zinc-300 leading-relaxed mb-12 whitespace-pre-line">
+              <div className="text-2xl md:text-4xl font-light italic text-[var(--fg-muted)] leading-relaxed mb-12 whitespace-pre-line">
                 &quot;{REVIEWS[currentReview].text}&quot;
               </div>
               <div className="h-[2px] w-16 bg-[#0ea5e9] mb-6" />
-              <span className="font-[family-name:var(--font-orbitron)] uppercase tracking-[0.4em] text-md text-white">
+              <span className="font-[family-name:var(--font-orbitron)] uppercase tracking-[0.4em] text-md text-[var(--fg)]">
                 {REVIEWS[currentReview].name}
               </span>
             </motion.div>
