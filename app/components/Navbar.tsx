@@ -146,7 +146,7 @@ export default function Navbar() {
         )}
       </div>
 
-      {/* MOBILE MENU — MATCH DESKTOP LOOK */}
+      {/* MOBILE MENU WITH GRID / DIVIDERS */}
       <AnimatePresence>
         {isRealMobile && isMobileMenuOpen && (
           <motion.div
@@ -161,27 +161,51 @@ export default function Navbar() {
               </button>
             </div>
 
-            <div className="flex flex-col items-center gap-12 mt-20 uppercase font-bold tracking-widest text-white">
-              <Link style={linkStyle} onClick={() => setIsMobileMenuOpen(false)} href="/">HOME</Link>
-              <Link style={linkStyle} onClick={() => setIsMobileMenuOpen(false)} href="/#about">ABOUT</Link>
+            <div className="flex flex-col mt-16 text-white uppercase font-bold tracking-widest">
 
-              <div className="flex flex-col items-center gap-6">
-                <span className="text-[#0ea5e9] tracking-widest">SERVICES</span>
-                {SERVICES_NAV.map((s) => (
-                  <Link
-                    key={s.name}
-                    href={s.href}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    style={linkStyle}
-                  >
-                    {s.name}
-                  </Link>
-                ))}
+              <Link
+                href="/"
+                onClick={() => setIsMobileMenuOpen(false)}
+                style={linkStyle}
+                className="py-6 text-center border-b border-white/20"
+              >
+                HOME
+              </Link>
+
+              <Link
+                href="/#about"
+                onClick={() => setIsMobileMenuOpen(false)}
+                style={linkStyle}
+                className="py-6 text-center border-b border-white/20"
+              >
+                ABOUT
+              </Link>
+
+              <div className="py-6 text-center border-b border-white/20 text-[#0ea5e9]">
+                SERVICES
               </div>
 
-              <Link style={linkStyle} onClick={() => setIsMobileMenuOpen(false)} href="/#contact">
+              {SERVICES_NAV.map((s) => (
+                <Link
+                  key={s.name}
+                  href={s.href}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  style={linkStyle}
+                  className="py-6 text-center border-b border-white/10"
+                >
+                  {s.name}
+                </Link>
+              ))}
+
+              <Link
+                href="/#contact"
+                onClick={() => setIsMobileMenuOpen(false)}
+                style={linkStyle}
+                className="py-6 text-center"
+              >
                 CONTACT
               </Link>
+
             </div>
           </motion.div>
         )}
