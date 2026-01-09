@@ -85,7 +85,7 @@ export default function Navbar() {
                 onMouseEnter={() => setIsServicesOpen(true)}
                 onMouseLeave={() => setIsServicesOpen(false)}
               >
-                <button className="flex items-center gap-2 uppercase font-bold tracking-widest">
+                <button className="flex items-center gap-2 uppercase font-bold tracking-widest text-white">
                   SERVICES <ChevronDown size={16} />
                 </button>
 
@@ -146,14 +146,14 @@ export default function Navbar() {
         )}
       </div>
 
-      {/* MOBILE MENU OVERLAY */}
+      {/* MOBILE MENU — MATCH DESKTOP LOOK */}
       <AnimatePresence>
         {isRealMobile && isMobileMenuOpen && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-[var(--bg)] z-[10001]"
+            className="fixed inset-0 bg-[#1f2933] z-[10001]"
           >
             <div className="flex justify-end p-6">
               <button onClick={() => setIsMobileMenuOpen(false)}>
@@ -161,9 +161,9 @@ export default function Navbar() {
               </button>
             </div>
 
-            <div className="flex flex-col items-center gap-10 mt-20 text-xl font-bold uppercase">
-              <Link onClick={() => setIsMobileMenuOpen(false)} href="/">HOME</Link>
-              <Link onClick={() => setIsMobileMenuOpen(false)} href="/#about">ABOUT</Link>
+            <div className="flex flex-col items-center gap-12 mt-20 uppercase font-bold tracking-widest text-white">
+              <Link style={linkStyle} onClick={() => setIsMobileMenuOpen(false)} href="/">HOME</Link>
+              <Link style={linkStyle} onClick={() => setIsMobileMenuOpen(false)} href="/#about">ABOUT</Link>
 
               <div className="flex flex-col items-center gap-6">
                 <span className="text-[#0ea5e9] tracking-widest">SERVICES</span>
@@ -172,14 +172,14 @@ export default function Navbar() {
                     key={s.name}
                     href={s.href}
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="no-underline"
+                    style={linkStyle}
                   >
                     {s.name}
                   </Link>
                 ))}
               </div>
 
-              <Link onClick={() => setIsMobileMenuOpen(false)} href="/#contact">
+              <Link style={linkStyle} onClick={() => setIsMobileMenuOpen(false)} href="/#contact">
                 CONTACT
               </Link>
             </div>
