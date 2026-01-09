@@ -4,7 +4,7 @@ import { ShieldCheck, Cpu, Globe, PhoneCall } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-[#e5e7eb] dark:bg-[#1f2933] border-t border-[var(--border)] py-20 text-[#0b0c10] dark:text-white">
+    <footer className="w-full bg-[#f1f5f9] dark:bg-[#f1f5f9] border-t border-[var(--border)] py-20 text-[#0b0c10] dark:text-white">
       <div className="max-w-4xl mx-auto px-6 flex flex-col items-center text-center">
 
         <div className="mb-12">

@@ -55,15 +55,13 @@ export default function Navbar() {
   };
 
   const linkStyle = {
-  textDecoration: "none",
-  color: "#ffffff",
-};
-
+    textDecoration: "none",
+    color: "#ffffff",
+  };
 
   return (
     <nav className="fixed top-0 left-0 right-0 w-full bg-[#e5e7eb] dark:bg-[#1f2933] border-b border-[var(--border)] z-[10000]">
       <div className="max-w-[1900px] mx-auto px-6 md:px-12 py-6 md:py-10 flex items-center justify-between">
-
         <Link href="/" className="flex items-center gap-4" style={linkStyle}>
           {!isRealMobile && (
             <div className="bg-[#00FFFF] p-2 rounded-lg">
@@ -75,6 +73,7 @@ export default function Navbar() {
           </span>
         </Link>
 
+        {/* DESKTOP */}
         {!isRealMobile && (
           <>
             <div className="absolute left-1/2 -translate-x-1/2 flex items-center gap-[120px]">
@@ -87,8 +86,7 @@ export default function Navbar() {
                 onMouseLeave={() => setIsServicesOpen(false)}
               >
                 <button className="flex items-center gap-2 uppercase font-bold tracking-widest">
-                  SERVICES
-                  <ChevronDown size={16} />
+                  SERVICES <ChevronDown size={16} />
                 </button>
 
                 <AnimatePresence>
@@ -118,10 +116,7 @@ export default function Navbar() {
             </div>
 
             <div className="flex items-center gap-6">
-              <button
-                onClick={toggleTheme}
-                className="p-3 rounded-full border border-[var(--border)]"
-              >
+              <button onClick={toggleTheme} className="p-3 rounded-full border border-[var(--border)]">
                 {theme === "light" ? <Moon size={18} /> : <Sun size={18} />}
               </button>
 
@@ -138,6 +133,7 @@ export default function Navbar() {
           </>
         )}
 
+        {/* MOBILE */}
         {isRealMobile && (
           <div className="flex items-center gap-4">
             <button onClick={toggleTheme}>
@@ -150,13 +146,42 @@ export default function Navbar() {
         )}
       </div>
 
+      {/* MOBILE MENU OVERLAY */}
       <AnimatePresence>
         {isRealMobile && isMobileMenuOpen && (
-          <motion.div className="fixed inset-0 bg-[var(--bg)] z-[10001]">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-[var(--bg)] z-[10001]"
+          >
             <div className="flex justify-end p-6">
               <button onClick={() => setIsMobileMenuOpen(false)}>
                 <X size={30} className="text-[#00FFFF]" />
               </button>
+            </div>
+
+            <div className="flex flex-col items-center gap-10 mt-20 text-xl font-bold uppercase">
+              <Link onClick={() => setIsMobileMenuOpen(false)} href="/">HOME</Link>
+              <Link onClick={() => setIsMobileMenuOpen(false)} href="/#about">ABOUT</Link>
+
+              <div className="flex flex-col items-center gap-6">
+                <span className="text-[#0ea5e9] tracking-widest">SERVICES</span>
+                {SERVICES_NAV.map((s) => (
+                  <Link
+                    key={s.name}
+                    href={s.href}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="no-underline"
+                  >
+                    {s.name}
+                  </Link>
+                ))}
+              </div>
+
+              <Link onClick={() => setIsMobileMenuOpen(false)} href="/#contact">
+                CONTACT
+              </Link>
             </div>
           </motion.div>
         )}
