@@ -9,10 +9,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Quote, Phone, PhoneCall } from "lucide-react";
 
 const BANNERS = [
-  { title: "PRECISION CARE", subtitle: "Industrial Grade Home Diagnostics", img: "/banner1.jpg" },
-  { title: "ELITE SERVICE", subtitle: "2-Hour Response Time Guaranteed", img: "/banner2.jpg" },
-  { title: "SMART REPAIR", subtitle: "AI-Powered Appliance Optimization", img: "/banner3.jpg" },
-  { title: "SMART REPAIR", subtitle: "AI-Powered Appliance Optimization", img: "/banner4.jpg" }
+  { title: "PRECISION CARE", subtitle: "Industrial Grade Home Diagnostics", img: "/banner1.webp" },
+  { title: "ELITE SERVICE", subtitle: "2-Hour Response Time Guaranteed", img: "/banner2.webp" },
+  { title: "SMART REPAIR", subtitle: "AI-Powered Appliance Optimization", img: "/banner3.webp" },
+  { title: "SMART REPAIR", subtitle: "AI-Powered Appliance Optimization", img: "/banner4.webp" }
 ];
 
 const REVIEWS = [
@@ -29,12 +29,12 @@ const REVIEWS = [
 ];
 
 const SERVICES = [
-  { title: "Washing Machine Repair & Service", desc: "Expert repair for all types top load, front load, fully and semi automatic.", img: "/washing.png", scale: "w-[19.2vw]", slug: "washing-machine" },
-  { title: "Refrigerator Repair & Service", desc: "Service for all types single to side by side models.", img: "/fridge.png", scale: "w-[13.5vw]", slug: "refrigerator" },
-  { title: "Microwave Repair & Service", desc: "Expert repairs for grill and convection models.", img: "/microwave.png", scale: "w-[23.7vw]", slug: "microwave" },
-  { title: "AC Repair & Service", desc: "Expert repair for window and split units.", img: "/ac.png", scale: "w-[27.2vw]", slug: "air-conditioner" },
-  { title: "Geyser Repair & Service", desc: "Fast, reliable service for all types.", img: "/geyser.png", scale: "w-[18vw]", slug: "geyser" },
-  { title: "TV Repair & Service", desc: "Service for all types LED, LCD, Smart TVs, and more.", img: "/tv.png", scale: "w-[24.7vw]", slug: "television" },
+  { title: "Washing Machine Repair & Service", desc: "Expert repair for all types top load, front load, fully and semi automatic.", img: "/washing.webp", scale: "w-[19.2vw]", slug: "washing-machine" },
+  { title: "Refrigerator Repair & Service", desc: "Service for all types single to side by side models.", img: "/fridge.webp", scale: "w-[13.5vw]", slug: "refrigerator" },
+  { title: "Microwave Repair & Service", desc: "Expert repairs for grill and convection models.", img: "/microwave.webp", scale: "w-[23.7vw]", slug: "microwave" },
+  { title: "AC Repair & Service", desc: "Expert repair for window and split units.", img: "/ac.webp", scale: "w-[27.2vw]", slug: "air-conditioner" },
+  { title: "Geyser Repair & Service", desc: "Fast, reliable service for all types.", img: "/geyser.webp", scale: "w-[18vw]", slug: "geyser" },
+  { title: "TV Repair & Service", desc: "Service for all types LED, LCD, Smart TVs, and more.", img: "/tv.webp", scale: "w-[24.7vw]", slug: "television" },
 ];
 
 const SlowTypewriter = ({ text, delay = 0 }: { text: string; delay?: number }) => {
